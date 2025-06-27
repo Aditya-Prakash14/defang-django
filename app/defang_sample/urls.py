@@ -17,9 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # API endpoints
+    path('api/', include('api.urls', namespace='api')),
+    path('api/auth/', include('users.urls', namespace='users')),
+    path('api/courses/', include('courses.urls', namespace='courses')),
+    path('api/quizzes/', include('quizzes.urls', namespace='quizzes')),
+    path('api/certificates/', include('certificates.urls', namespace='certificates')),
+
+    # Legacy endpoints
     path('todos/', include('example_app.urls', namespace='example_app')),
     path('', RedirectView.as_view(url='/todos/')),
 ]
+
+# Serve media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

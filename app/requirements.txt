@@ -4,3 +4,22 @@ gunicorn==22.0.0
 packaging==24.0
 sqlparse==0.5.0
 whitenoise==6.6.0
+
+# Django REST Framework
+djangorestframework==3.16.0
+djangorestframework-simplejwt==5.5.0
+
+# Media handling
+Pillow==11.2.1
+
+# PDF generation
+reportlab==4.4.2
+
+# Environment variables
+python-decouple==3.8
+
+# CORS handling
+django-cors-headers==4.7.0
+
+# JWT
+PyJWT==2.9.0
