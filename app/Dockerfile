@@ -23,5 +23,9 @@ COPY . /code/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+# Create startup script
+COPY startup.sh /code/
+RUN chmod +x /code/startup.sh
+
 # Start server
-CMD python manage.py migrate && python manage.py createsuperauto && gunicorn defang_sample.wsgi:application --bind 0.0.0.0:8000
+CMD ["/code/startup.sh"]

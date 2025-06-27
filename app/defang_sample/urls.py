@@ -19,9 +19,13 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import JsonResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Health check endpoint (simple, no dependencies)
+    path('health/', lambda request: JsonResponse({'status': 'ok', 'method': request.method})),
 
     # API endpoints
     path('api/', include('api.urls', namespace='api')),

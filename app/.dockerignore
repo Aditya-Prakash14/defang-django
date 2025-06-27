@@ -29,3 +29,21 @@ media/
 .DS_Store
 
 .venv/
+
+# Test files
+run_tests.py
+integration_tests.py
+setup.py
+**/tests.py
+
+# Documentation
+*.md
+!README.md
+
+# IDE files
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
